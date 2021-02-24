@@ -1,0 +1,31 @@
+<mat-card>
+    <button mat-button color="primary" style="margin-right: 20px;" (click)="addName()">
+        <mat-icon>add</mat-icon>
+    </button>
+</mat-card>
+<mat-card style="margin-bottom: 25px;">
+  <mat-card-title>Enter names:</mat-card-title>
+  <mat-card-content>
+  <div *ngFor="let name of names; let i = index; trackBy: trackBy">
+      <mat-form-field>
+          <input matInput type="text" class="form-control"
+                 placeholder="Name" required [(ngModel)]="names[i]" autofocus>
+      </mat-form-field>
+      <button mat-stroked-button color="warn"
+              (click)="removeName(i)">
+        <mat-icon>delete</mat-icon>
+      </button>
+  </div>
+  </mat-card-content>
+</mat-card>
+
+<mat-card>
+  <mat-card-title>Required letters:</mat-card-title>
+  <div>
+    <ul>
+      <li *ngFor="let c of counts | keyvalue">
+        {{c.key}} - {{c.value}}
+      </li>
+    </ul>
+  </div>
+</mat-card>
